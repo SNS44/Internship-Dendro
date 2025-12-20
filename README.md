@@ -95,7 +95,7 @@ This AI-powered app helps students and nature enthusiasts identify and explore t
 
 ## ✅ How to Run
 
-Run `tree_CNN.ipynb` to train the image classifier and save:
+Run `tree.ipynb` to train the image classifier and save:
 Launch the app:
 
 streamlit run streamlit_integrated.py
