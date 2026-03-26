@@ -137,10 +137,17 @@ def main():
             lon = st.number_input("Longitude", -180.0, 180.0, -85.8009, format="%.6f", help="GPS Longitude")
             diameter = st.number_input("Average Tree Diameter (cm)", 0.0, 1000.0, 1.0)
         with col2:
-            native = st.selectbox("Native Status", df['native'].astype('category').cat.categories)
-            city = st.selectbox("City", df['city'].astype('category').cat.categories)
-            state = st.selectbox("State", df['state'].astype('category').cat.categories)
+            native_options = df['native'].dropna().unique()
+            native = st.selectbox("Native Status", sorted(native_options))
+            
+            city_options = df['city'].dropna().unique()
+            city = st.selectbox("City", sorted(city_options))
+            
+            # Dynamically filter the available states to perfectly match the chosen city
+            valid_states = df[df['city'] == city]['state'].dropna().unique()
+            state = st.selectbox("State", sorted(valid_states))
 
+        # We must index from the master category list that the joblib Scaler was fitted on
         native_code = df['native'].astype('category').cat.categories.get_loc(native)
         city_code = df['city'].astype('category').cat.categories.get_loc(city)
         state_code = df['state'].astype('category').cat.categories.get_loc(state)
