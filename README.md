@@ -1,103 +1,65 @@
+# 🌿 DendroClassifier
 
-# 🌳 Tree Intelligence Assistant
-
-This AI-powered app helps students and nature enthusiasts identify and explore tree species based on image, location, and tree attributes.
+This AI-powered application helps students and nature enthusiasts identify and explore tree species based on images, location data, and tree attributes. Let AI be your personal botanist!
 
 ---
 
-## 🧠 Features
+## ✨ Key Highlights
+- **Advanced CNN Engine**: Employs a robust image classifier utilizing Transfer Learning. Integrates strict "Class Penalties" to combat dataset imbalance, preventing the AI from lazily guessing generic classes. 
+- **Elegant Edge-Case Handling**: Trees that the AI genuinely categorizes into the dataset's `other` folder are professionally displayed as **"Unclassified / Miscellaneous Species"**.
+
+---
+
+## 🧠 Core Features
 
 <details>
 <summary><strong>🌲 Recommend Trees by Location</strong></summary>
 
-- Input GPS coordinates (latitude, longitude)
-- Specify tree diameter, native status, city, and state
-- Returns the top 5 tree species likely found in that area
+- Input GPS coordinates (latitude, longitude).
+- Specify tree diameter, native status, city, and state.
+- Returns the top 5 tree species mathematically most likely to thrive in your exact area using K-Nearest Neighbors.
 </details>
 
 <details>
 <summary><strong>📍 Find Locations for a Tree</strong></summary>
 
-- Choose a tree species from a dropdown
-- Displays cities and states where the species is most commonly found
+- Choose a specific tree species from a dropdown menu.
+- Instantly displays a cleanly formatted index-free table of the cities and states where that species is historically most commonly found.
 </details>
 
 <details>
 <summary><strong>📷 Identify Tree from Image</strong></summary>
 
-- Upload an image of a tree
-- CNN model predicts the species
-- If found in the dataset, shows common locations for that species
+- Upload an image of a leaf, bark, or full tree.
+- Our custom-trained CNN predicts the species and computes its confidence percentage via an attractive metric widget.
+- Click to expand and view the Top 3 Alternative AI predictions.
+- Instantly cross-references the prediction with the geolocation database to show you where the tree naturally grows!
 </details>
 
 ---
 
-## 📊 Dataset Description
+## 📦 Requirements
 
-<details>
-<summary><strong>🗂️ Tree Metadata</strong></summary>
-
-- **Source**: Open tree surveys from multiple cities (e.g., Louisville, Chicago)
-- **Total records**: ~1.38 million
-- **Key columns**:
-  - `common_name`: Tree species (e.g., Bur Oak)
-  - `scientific_name`: Botanical name (e.g., Quercus macrocarpa)
-  - `latitude_coordinate`, `longitude_coordinate`
-  - `city`, `state`, `address`
-  - `native`: Whether the tree is native to the area
-  - `diameter_breast_height_CM`: Tree height/width measure
-</details>
-
-<details>
-<summary><strong>🖼️ Tree Image Dataset</strong></summary>
-
-- **Structure**: Folder-based, each folder named after a tree species
-- **Use**: Used to train the CNN for species recognition
-- **Preprocessing**:
-  - Images resized to 224x224
-  - Normalized pixel values
-  - Augmented with flips, zoom, and rotation
-</details>
+- **Streamlit**: Web interface framework
+- **TensorFlow & Keras**: Image classification
+- **Scikit-Learn**: K-Nearest Neighbors recommendation engine
+- **Pandas & NumPy**: Tabular data manipulation
+- **Joblib**: Model serialization
+- **Pillow (PIL)**: Image processing
 
 ---
 
-## 🧪 Algorithms Used
+## ✅ How to Run Locally
 
-<details>
-<summary><strong>🔍 Recommender System</strong></summary>
-
-- **Algorithm**: K-Nearest Neighbors (KNN)
-- **Library**: `sklearn.neighbors.NearestNeighbors`
-- **Inputs**: location, diameter, native status, city/state
-- **Output**: Most common tree species nearby
-</details>
-
-<details>
-<summary><strong>🧠 CNN Classifier</strong></summary>
-
-- **Model**: Sequential CNN (Conv2D + MaxPooling + Dense layers)
-- **Library**: `tensorflow.keras`
-- **Input**: 224x224 image
-- **Output**: Predicted tree species with probability
-- **Loss**: Categorical Crossentropy
-- **Optimizer**: Adam
-</details>
-
-<details>
-<summary><strong>📊 Preprocessing & Encoding</strong></summary>
-
-- **Categorical Encoding**: LabelEncoder
-- **Scaling**: StandardScaler for lat/lon/diameter
-- **Data Splits**: 80% training, 20% validation
-</details>
-
----
-
-## ✅ How to Run
-
-Run `tree.ipynb` to train the image classifier and save:
-Launch the app:
-
-streamlit run streamlit_integrated.py
-
- 
+1. Open your terminal and navigate to your project folder:
+   ```bash
+   cd path/to/your/DendroClassifier
+   ```
+2. Install all required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Launch the Streamlit App!
+   ```bash
+   streamlit run treecl.py
+   ```
