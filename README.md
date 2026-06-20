@@ -1,6 +1,6 @@
 # 🌿 DendroClassifier
 
-This AI-powered application helps students and nature enthusiasts identify and explore tree species based on images, location data, and tree attributes. Let AI be your personal botanist!
+This application helps students and nature enthusiasts identify and explore tree species based on images, location data, and tree attributes. Let AI be your personal botanist!
 
 ---
 
