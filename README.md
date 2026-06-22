@@ -282,11 +282,6 @@ Submitted for the **Shell-Edunet Skills4Future AICTE Internship** — a program 
 
 This is not a toy project. It demonstrates how AI can make environmental and botanical knowledge practical and accessible for everyone.
 
----
-
-## 📜 License
-
-This project is intended for **educational and academic use** as part of the Edunet Foundation internship program.
 
 ---
 
